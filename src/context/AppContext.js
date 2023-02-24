@@ -10,3 +10,13 @@ const initialState = {
     ],
     Location: 'E'
 };
+
+export const AppContext = createContext();
+
+export const AppProvider = (props) => {
+    const [state, dispatch] = useReducer(AppReducer, initialState);
+
+    const totalExpenses = state.expenses.reduce((total, item) => {
+        return (total = total + (item.unitprice*item.quantity));
+    }, 0);
+}
